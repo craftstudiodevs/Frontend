@@ -18,3 +18,22 @@ export type DeveloperAccount = {
     remainingBids: number,
     totalBids: number,
 }
+
+
+export type PublicAccountDetailsResponse = {
+    id: number,
+    name: string,
+    profilePictureUrl: string,
+}
+
+export type DeveloperCommissionResponse = {
+    title: string,
+    summary: string,
+    requirements: string,
+    buyerFixedPricePref: number,
+    buyerRatePricePref: number,
+    expiryTime: number,
+    commissionId: number,
+    buyer: PublicAccountDetailsResponse,
+    minimumReputation: number,
+}

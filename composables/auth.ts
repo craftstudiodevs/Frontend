@@ -1,23 +1,27 @@
-export const useAuth = async () => {
+import type { RouteLocationNormalized } from "vue-router"
+
+export const useAuth = async (route: RouteLocationNormalized | null = null) => {
     const auth = useState('auth', (): Auth => ({
         token: '',
         user: null
     }))
 
-    if (!auth.value.token) {
-        auth.value = await initAuth()
+    if (!auth.value.user) {
+        auth.value = await initAuth(route)
     }
 
     return auth
 }
 
-export const initAuth = async () => {
+export const initAuth = async (route: RouteLocationNormalized | null = null) => {
     const auth: Auth = {
         user: null,
         token: '',
     }
 
-    const route = useRoute()
+    if (!route) {
+        route = useRoute()
+    }
     const authCookie = useCookie('auth-token', {
         maxAge: 60 * 60 * 24 * 365 * 10, // ten years
         sameSite: 'lax',
@@ -44,7 +48,8 @@ export const initAuth = async () => {
                 true
             )
         } catch (e) {
-            console.log('auth error', e)
+            authCookie.value = ''
+            auth.token = ''
         }
     }
 
@@ -53,7 +58,6 @@ export const initAuth = async () => {
 
 export const getAuthUrl = (redirect: string) => {
     const config = useRuntimeConfig()
-    console.log(redirect)
     return `${config.public.apiUrl}/auth/login?return_to=${encodeURIComponent(redirect)}`
 }
 

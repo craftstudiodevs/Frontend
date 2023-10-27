@@ -12,5 +12,8 @@ export const useApiFetch = async (url: string, options: any = {}, skipAuth = fal
         options.headers.Authorization = `Bearer ${auth.value.token}`
     }
 
+    options.headers['Access-Control-Allow-Origin'] = '*'
+    options.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+
     return await $fetch(`${apiUrl}${url}`, options)
 }

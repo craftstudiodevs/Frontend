@@ -1,0 +1,27 @@
+@import '~/assets/styles/normalize.css';
+
+html {
+    font-size: 16px;
+    font-family: 'Fira Code';
+    background-color: $color-bg-dark;
+    color: $color-text;
+}
+
+a {
+    color: $color-text-strong;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.normal-page {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.section-card {
+    background-color: $color-bg-light;
+    border-radius: 0.5rem;
+    padding: .75rem 1.5rem;
+}
