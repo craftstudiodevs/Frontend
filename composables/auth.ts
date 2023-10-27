@@ -1,5 +1,3 @@
-import { useApiFetch } from "./fetch"
-
 export const useAuth = async () => {
     const auth = useState('auth', (): Auth => ({
         token: '',
@@ -29,7 +27,6 @@ export const initAuth = async () => {
     })
 
     if (route.query.code) {
-        console.log('auth code', route.query.code)
         authCookie.value = route.query.code as string
     }
 
