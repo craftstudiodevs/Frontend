@@ -1,4 +1,5 @@
 @import '~/assets/styles/normalize.css';
+@import '~/assets/styles/markdown.scss';
 
 html {
     font-size: 16px;
@@ -7,8 +8,12 @@ html {
     color: $color-text;
 }
 
+body {
+    padding: 0 1rem;
+}
+
 a {
-    color: $color-text-strong;
+    color: $color-accent-strong;
     text-decoration: none;
     &:hover {
         text-decoration: underline;
@@ -24,4 +29,21 @@ a {
     background-color: $color-bg-light;
     border-radius: 0.5rem;
     padding: .75rem 1.5rem;
+    min-height: 2rem;
+
+    .section-title {
+        font-size: 1.5rem;
+        margin: .25rem 0;
+        color: $color-text-strong;
+    }
+
+    .section-summary {
+        font-size: 1rem;
+        margin: .25rem 0;
+    
+    }
+}
+
+.strong-text {
+    color: $color-text-strong;
 }

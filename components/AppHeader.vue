@@ -122,6 +122,10 @@ header {
         }
     }
 
+    .other-btn {
+        color: $color-text;
+    }
+
     #premium {
         color: $color-accent-strong;
     }

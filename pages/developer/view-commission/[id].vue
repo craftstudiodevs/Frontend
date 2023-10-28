@@ -1,17 +1,26 @@
 <template>
     <div class="normal-page">
         <div class="grid-container">
-            <section id="commission-info" class="section-card">
-
-            </section>
+            <aside>
+                <section id="commission-info" class="section-card">
+                    <h1 class="section-title">{{ commission_info.title }}</h1>
+                    <p class="section-summary">{{ commission_info.summary }}</p>
+                    <p>Expiry: {{ formatTimeRelative(commission_info.expiryTime) }}</p>
+                </section>
+            </aside>
 
             <section id="description" class="section-card">
-                <MarkdownComponent :content="commission_info.requirements"/>
+                <p>TODO: Add a fullscreen button aligned right next to requirements that expands the requirements over the
+                    top of the left and right columns and darkens the screen. Reader mode.</p>
+                <MarkdownComponent id="description-md" :content="commission_info.requirements" />
             </section>
 
-            <section id="bid-panel" class="section-card">
-
-            </section>
+            <aside>
+                <section id="bid-panel" class="section-card">
+                    <h2 class="strong-text">Submit Bid</h2>
+                </section>
+            </aside>
+            
         </div>
     </div>
 </template>
@@ -33,6 +42,10 @@ const commission_info = (await useApiFetch(`/developer/commission/${commission_i
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr;
     gap: 0.75rem;
+
+    &>* {
+        overflow: hidden;
+    }
 }
 
 #commission-info {
@@ -43,6 +56,10 @@ const commission_info = (await useApiFetch(`/developer/commission/${commission_i
 #description {
     grid-column: 2;
     grid-row: 1;
+
+    #description-md {
+        overflow: hidden;
+    }
 }
 
 #bid-panel {

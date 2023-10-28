@@ -9,5 +9,7 @@ const props = defineProps<{
     content: string
 }>()
 
-const rendered_markdown = md().render(props.content)
+const rendered_markdown = md({
+    linkify: true,
+}).render(props.content)
 </script>
