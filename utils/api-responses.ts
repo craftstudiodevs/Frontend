@@ -36,4 +36,19 @@ export type DeveloperCommissionResponse = {
     commissionId: number,
     buyer: PublicAccountDetailsResponse,
     minimumReputation: number,
+    category: string,
+}
+
+
+export type DeveloperAvailableCommissionsResponse = {
+    commissions: [CommissionPreviewResponse]
+}
+
+export type CommissionPreviewResponse = {
+    title: string,
+    summary: string,
+    commissionId: number,
+    fixedPriceAmount: number,
+    hourlyPriceAmount: number,
+    category: string,
 }

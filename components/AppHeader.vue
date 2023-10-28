@@ -5,14 +5,14 @@
                 <nuxt-link to="/" id="nav-home">CraftStudio</nuxt-link>
 
                 <template v-if="auth.user?.developerAccount">
-                    <nuxt-link to="/developer/find-commissions" class="other-btn">Find commissions</nuxt-link>
-                    <nuxt-link to="/developer/my-bids" class="other-btn">My bids</nuxt-link>
-                    <nuxt-link to="/developer/my-commissions" class="other-btn">My commissions</nuxt-link>
+                    <nuxt-link to="/developer/find-commissions">Find commissions</nuxt-link>
+                    <nuxt-link to="/developer/my-bids">My bids</nuxt-link>
+                    <nuxt-link to="/developer/my-commissions">My commissions</nuxt-link>
                 </template>
 
                 <template v-else-if="auth.user?.buyerAccount">
-                    <nuxt-link to="/buyer/my-commissions" class="other-btn">Commissions</nuxt-link>
-                    <nuxt-link to="/buyer/create-commission" class="other-btn">Create</nuxt-link>
+                    <nuxt-link to="/buyer/my-commissions">My commissions</nuxt-link>
+                    <nuxt-link to="/buyer/new-commission">New</nuxt-link>
                 </template>
 
                 <template v-else-if="auth.user">
@@ -38,7 +38,7 @@
             </div>
             <div class="loggedout-nav nav-row nav-right" v-else>
                 <nuxt-link :to="`/auth/login?redirect=${route.fullPath}`" class="main-btn">Log in</nuxt-link>
-                <nuxt-link to="/auth/register" class="other-btn">Register</nuxt-link>
+                <nuxt-link to="/auth/register">Register</nuxt-link>
             </div>
         </div>
     </header>
@@ -90,6 +90,10 @@ header {
         display: flex;
         align-items: center;
 
+        & > * {
+            color: $color-text;
+        }
+
         &.nav-left {
             flex-direction: row;
 
@@ -120,10 +124,6 @@ header {
             background-color: $color-accent;
             border-color: $color-accent;
         }
-    }
-
-    .other-btn {
-        color: $color-text;
     }
 
     #premium {

@@ -1,5 +1,3 @@
-import type { RouteLocationNormalized } from "vue-router"
-
 export const useAuth = async (route: RouteLocationNormalized | null = null) => {
     const auth = useState('auth', (): Auth => ({
         token: '',
